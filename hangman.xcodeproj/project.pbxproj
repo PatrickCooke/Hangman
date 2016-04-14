@@ -13,6 +13,17 @@
 		43DFC3D41CBFF00D0074D995 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43DFC3D21CBFF00D0074D995 /* Main.storyboard */; };
 		43DFC3D61CBFF00D0074D995 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43DFC3D51CBFF00D0074D995 /* Assets.xcassets */; };
 		43DFC3D91CBFF00D0074D995 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43DFC3D71CBFF00D0074D995 /* LaunchScreen.storyboard */; };
+		43DFC4161CBFF1AA0074D995 /* Hangman01.png in Resources */ = {isa = PBXBuildFile; fileRef = 43DFC40C1CBFF1AA0074D995 /* Hangman01.png */; };
+		43DFC4171CBFF1AA0074D995 /* Hangman02.png in Resources */ = {isa = PBXBuildFile; fileRef = 43DFC40D1CBFF1AA0074D995 /* Hangman02.png */; };
+		43DFC4181CBFF1AA0074D995 /* Hangman03.png in Resources */ = {isa = PBXBuildFile; fileRef = 43DFC40E1CBFF1AA0074D995 /* Hangman03.png */; };
+		43DFC4191CBFF1AA0074D995 /* Hangman04.png in Resources */ = {isa = PBXBuildFile; fileRef = 43DFC40F1CBFF1AA0074D995 /* Hangman04.png */; };
+		43DFC41A1CBFF1AA0074D995 /* Hangman05.png in Resources */ = {isa = PBXBuildFile; fileRef = 43DFC4101CBFF1AA0074D995 /* Hangman05.png */; };
+		43DFC41B1CBFF1AA0074D995 /* Hangman06.png in Resources */ = {isa = PBXBuildFile; fileRef = 43DFC4111CBFF1AA0074D995 /* Hangman06.png */; };
+		43DFC41C1CBFF1AA0074D995 /* Hangman07.png in Resources */ = {isa = PBXBuildFile; fileRef = 43DFC4121CBFF1AA0074D995 /* Hangman07.png */; };
+		43DFC41D1CBFF1AA0074D995 /* Hangman08.png in Resources */ = {isa = PBXBuildFile; fileRef = 43DFC4131CBFF1AA0074D995 /* Hangman08.png */; };
+		43DFC41E1CBFF1AA0074D995 /* Hangman09.png in Resources */ = {isa = PBXBuildFile; fileRef = 43DFC4141CBFF1AA0074D995 /* Hangman09.png */; };
+		43DFC41F1CBFF1AA0074D995 /* Hangman10.png in Resources */ = {isa = PBXBuildFile; fileRef = 43DFC4151CBFF1AA0074D995 /* Hangman10.png */; };
+		43DFC4211CBFF1B80074D995 /* WordSetApple.csv in Resources */ = {isa = PBXBuildFile; fileRef = 43DFC4201CBFF1B80074D995 /* WordSetApple.csv */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +37,17 @@
 		43DFC3D51CBFF00D0074D995 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		43DFC3D81CBFF00D0074D995 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		43DFC3DA1CBFF00D0074D995 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		43DFC40C1CBFF1AA0074D995 /* Hangman01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Hangman01.png; sourceTree = "<group>"; };
+		43DFC40D1CBFF1AA0074D995 /* Hangman02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Hangman02.png; sourceTree = "<group>"; };
+		43DFC40E1CBFF1AA0074D995 /* Hangman03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Hangman03.png; sourceTree = "<group>"; };
+		43DFC40F1CBFF1AA0074D995 /* Hangman04.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Hangman04.png; sourceTree = "<group>"; };
+		43DFC4101CBFF1AA0074D995 /* Hangman05.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Hangman05.png; sourceTree = "<group>"; };
+		43DFC4111CBFF1AA0074D995 /* Hangman06.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Hangman06.png; sourceTree = "<group>"; };
+		43DFC4121CBFF1AA0074D995 /* Hangman07.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Hangman07.png; sourceTree = "<group>"; };
+		43DFC4131CBFF1AA0074D995 /* Hangman08.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Hangman08.png; sourceTree = "<group>"; };
+		43DFC4141CBFF1AA0074D995 /* Hangman09.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Hangman09.png; sourceTree = "<group>"; };
+		43DFC4151CBFF1AA0074D995 /* Hangman10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Hangman10.png; sourceTree = "<group>"; };
+		43DFC4201CBFF1B80074D995 /* WordSetApple.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = WordSetApple.csv; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +85,8 @@
 				43DFC3CF1CBFF00D0074D995 /* ViewController.h */,
 				43DFC3D01CBFF00D0074D995 /* ViewController.m */,
 				43DFC3D21CBFF00D0074D995 /* Main.storyboard */,
+				43DFC4201CBFF1B80074D995 /* WordSetApple.csv */,
+				43DFC4221CBFF1C50074D995 /* Images */,
 				43DFC3D51CBFF00D0074D995 /* Assets.xcassets */,
 				43DFC3D71CBFF00D0074D995 /* LaunchScreen.storyboard */,
 				43DFC3DA1CBFF00D0074D995 /* Info.plist */,
@@ -77,6 +101,23 @@
 				43DFC3CA1CBFF00D0074D995 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		43DFC4221CBFF1C50074D995 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				43DFC40C1CBFF1AA0074D995 /* Hangman01.png */,
+				43DFC40D1CBFF1AA0074D995 /* Hangman02.png */,
+				43DFC40E1CBFF1AA0074D995 /* Hangman03.png */,
+				43DFC40F1CBFF1AA0074D995 /* Hangman04.png */,
+				43DFC4101CBFF1AA0074D995 /* Hangman05.png */,
+				43DFC4111CBFF1AA0074D995 /* Hangman06.png */,
+				43DFC4121CBFF1AA0074D995 /* Hangman07.png */,
+				43DFC4131CBFF1AA0074D995 /* Hangman08.png */,
+				43DFC4141CBFF1AA0074D995 /* Hangman09.png */,
+				43DFC4151CBFF1AA0074D995 /* Hangman10.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,8 +179,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				43DFC3D91CBFF00D0074D995 /* LaunchScreen.storyboard in Resources */,
+				43DFC41D1CBFF1AA0074D995 /* Hangman08.png in Resources */,
 				43DFC3D61CBFF00D0074D995 /* Assets.xcassets in Resources */,
 				43DFC3D41CBFF00D0074D995 /* Main.storyboard in Resources */,
+				43DFC4161CBFF1AA0074D995 /* Hangman01.png in Resources */,
+				43DFC4171CBFF1AA0074D995 /* Hangman02.png in Resources */,
+				43DFC41B1CBFF1AA0074D995 /* Hangman06.png in Resources */,
+				43DFC4191CBFF1AA0074D995 /* Hangman04.png in Resources */,
+				43DFC4181CBFF1AA0074D995 /* Hangman03.png in Resources */,
+				43DFC41A1CBFF1AA0074D995 /* Hangman05.png in Resources */,
+				43DFC4211CBFF1B80074D995 /* WordSetApple.csv in Resources */,
+				43DFC41C1CBFF1AA0074D995 /* Hangman07.png in Resources */,
+				43DFC41E1CBFF1AA0074D995 /* Hangman09.png in Resources */,
+				43DFC41F1CBFF1AA0074D995 /* Hangman10.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
