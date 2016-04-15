@@ -11,36 +11,38 @@
 
 @interface ViewController ()
 
-@property(nonatomic,strong)     NSArray     *wordSetArray;
-@property(nonatomic,strong)     NSString    *currentWord;
-@property(nonatomic,weak) IBOutlet UILabel  *wordLabel;
-@property(nonatomic,weak) IBOutlet UILabel  *remainingGuessesLabel;
-@property(nonatomic,weak) IBOutlet UIButton *aButton;
-@property(nonatomic,weak) IBOutlet UIButton *bButton;
-@property(nonatomic,weak) IBOutlet UIButton *cButton;
-@property(nonatomic,weak) IBOutlet UIButton *dButton;
-@property(nonatomic,weak) IBOutlet UIButton *eButton;
-@property(nonatomic,weak) IBOutlet UIButton *fButton;
-@property(nonatomic,weak) IBOutlet UIButton *gButton;
-@property(nonatomic,weak) IBOutlet UIButton *hButton;
-@property(nonatomic,weak) IBOutlet UIButton *iButton;
-@property(nonatomic,weak) IBOutlet UIButton *jButton;
-@property(nonatomic,weak) IBOutlet UIButton *kButton;
-@property(nonatomic,weak) IBOutlet UIButton *lButton;
-@property(nonatomic,weak) IBOutlet UIButton *mButton;
-@property(nonatomic,weak) IBOutlet UIButton *nButton;
-@property(nonatomic,weak) IBOutlet UIButton *oButton;
-@property(nonatomic,weak) IBOutlet UIButton *pButton;
-@property(nonatomic,weak) IBOutlet UIButton *qButton;
-@property(nonatomic,weak) IBOutlet UIButton *rButton;
-@property(nonatomic,weak) IBOutlet UIButton *sButton;
-@property(nonatomic,weak) IBOutlet UIButton *tButton;
-@property(nonatomic,weak) IBOutlet UIButton *uButton;
-@property(nonatomic,weak) IBOutlet UIButton *vButton;
-@property(nonatomic,weak) IBOutlet UIButton *wButton;
-@property(nonatomic,weak) IBOutlet UIButton *xButton;
-@property(nonatomic,weak) IBOutlet UIButton *yButton;
-@property(nonatomic,weak) IBOutlet UIButton *zButton;
+@property(nonatomic,weak) IBOutlet UIImageView  *hangmanImageView;
+@property(nonatomic,strong)        NSArray      *imageArray;
+@property(nonatomic,strong)        NSArray      *wordSetArray;
+@property(nonatomic,strong)        NSString     *currentWord;
+@property(nonatomic,weak) IBOutlet UILabel      *wordLabel;
+@property(nonatomic,weak) IBOutlet UILabel      *remainingGuessesLabel;
+@property(nonatomic,weak) IBOutlet UIButton     *aButton;
+@property(nonatomic,weak) IBOutlet UIButton     *bButton;
+@property(nonatomic,weak) IBOutlet UIButton     *cButton;
+@property(nonatomic,weak) IBOutlet UIButton     *dButton;
+@property(nonatomic,weak) IBOutlet UIButton     *eButton;
+@property(nonatomic,weak) IBOutlet UIButton     *fButton;
+@property(nonatomic,weak) IBOutlet UIButton     *gButton;
+@property(nonatomic,weak) IBOutlet UIButton     *hButton;
+@property(nonatomic,weak) IBOutlet UIButton     *iButton;
+@property(nonatomic,weak) IBOutlet UIButton     *jButton;
+@property(nonatomic,weak) IBOutlet UIButton     *kButton;
+@property(nonatomic,weak) IBOutlet UIButton     *lButton;
+@property(nonatomic,weak) IBOutlet UIButton     *mButton;
+@property(nonatomic,weak) IBOutlet UIButton     *nButton;
+@property(nonatomic,weak) IBOutlet UIButton     *oButton;
+@property(nonatomic,weak) IBOutlet UIButton     *pButton;
+@property(nonatomic,weak) IBOutlet UIButton     *qButton;
+@property(nonatomic,weak) IBOutlet UIButton     *rButton;
+@property(nonatomic,weak) IBOutlet UIButton     *sButton;
+@property(nonatomic,weak) IBOutlet UIButton     *tButton;
+@property(nonatomic,weak) IBOutlet UIButton     *uButton;
+@property(nonatomic,weak) IBOutlet UIButton     *vButton;
+@property(nonatomic,weak) IBOutlet UIButton     *wButton;
+@property(nonatomic,weak) IBOutlet UIButton     *xButton;
+@property(nonatomic,weak) IBOutlet UIButton     *yButton;
+@property(nonatomic,weak) IBOutlet UIButton     *zButton;
 
 
 @end
@@ -51,9 +53,10 @@ NSString *wordListString = @"";
 NSString *hiddenWord = @"";
 NSString *victorystring = @"*";
 int wrongGuess = 0;
-int guessRemain = 10;
+int guessRemain = 9;
 bool correctGuess = false;
 bool gameover = false;
+int currentImage = 0;
 
 
 
@@ -191,7 +194,8 @@ bool gameover = false;
     NSLog(@"%@", _currentWord);
     gameover = false;
     wrongGuess = 0;
-    guessRemain = 10;
+    guessRemain = 9;
+    _remainingGuessesLabel.text = [NSString stringWithFormat:@"%i", guessRemain];
     correctGuess = false;
     [self enableAllLetters];
     for (int h = 0; h < [_currentWord length]; h++) {
@@ -230,21 +234,34 @@ bool gameover = false;
         if (correctGuess == true) {
             [button setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
             NSLog(@"%@ was in the word", searchstring);
-        } else if (correctGuess == false && wrongGuess <= 8) {
+        } else if (correctGuess == false && wrongGuess <= 7) {
             [button setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
             wrongGuess ++;
             guessRemain --;
             NSLog(@"%@ was not in the word, you have %i ramaining guess", searchstring, guessRemain);
             _remainingGuessesLabel.text = [NSString stringWithFormat:@"%i",guessRemain];
-        } else if (correctGuess == false && wrongGuess == 9) {
+                if (currentImage < (_imageArray.count - 1)) {
+                    currentImage += 1;
+                } else {
+                    currentImage = 0;
+                }
+            [_hangmanImageView setImage:[UIImage imageNamed:_imageArray[currentImage]]];
+        } else if (correctGuess == false && wrongGuess == 8) {
             [button setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
             gameover = true;
+            _remainingGuessesLabel.text = [NSString stringWithFormat:@"%i",guessRemain];
+            if (currentImage < (_imageArray.count - 1)) {
+                currentImage += 1;
+            } else {
+                currentImage = 0;
+            }
+            [_hangmanImageView setImage:[UIImage imageNamed:_imageArray[currentImage]]];
             NSLog(@"Game Over");
             guessRemain --;
             _remainingGuessesLabel.text = [NSString stringWithFormat:@"%i",guessRemain];
             [self disableAllLetters];
             _wordLabel.text = @"Press New Game to Begin";
-            UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Sorry, You've Lost :(" message:@"Please Try again." preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Sorry, You've Lost :(" message:@"Please try again." preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {}];
             [alert addAction:defaultAction];
             [self presentViewController:alert animated:YES completion:nil];
@@ -260,6 +277,8 @@ bool gameover = false;
     NSString *wordString = [self readBundleFileToString:@"WordSetApple" ofType:@"csv"];
     _wordSetArray = [self convertCSVStringToArray:wordString];
     NSLog(@"Count %li",_wordSetArray.count);
+    _imageArray = @[@"Hangman01.png", @"Hangman02.png", @"Hangman03.png", @"Hangman04.png", @"Hangman05.png", @"Hangman06.png", @"Hangman07.png", @"Hangman08.png", @"Hangman09.png", @"Hangman10.png"];
+    [_hangmanImageView setImage:[UIImage imageNamed:_imageArray[currentImage]]];
 }
 
 - (void)didReceiveMemoryWarning {

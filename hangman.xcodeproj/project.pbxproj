@@ -86,8 +86,8 @@
 				43DFC3D01CBFF00D0074D995 /* ViewController.m */,
 				43DFC3D21CBFF00D0074D995 /* Main.storyboard */,
 				43DFC4201CBFF1B80074D995 /* WordSetApple.csv */,
-				43DFC4221CBFF1C50074D995 /* Images */,
 				43DFC3D51CBFF00D0074D995 /* Assets.xcassets */,
+				43DFC4221CBFF1C50074D995 /* Images */,
 				43DFC3D71CBFF00D0074D995 /* LaunchScreen.storyboard */,
 				43DFC3DA1CBFF00D0074D995 /* Info.plist */,
 				43DFC3C91CBFF00D0074D995 /* Supporting Files */,
@@ -355,6 +355,7 @@
 				43DFC3DF1CBFF00D0074D995 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
