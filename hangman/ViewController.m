@@ -13,6 +13,7 @@
 
 @property(nonatomic,strong)     NSArray     *wordSetArray;
 @property(nonatomic,strong)     NSString    *currentWord;
+@property(nonatomic,weak) IBOutlet UILabel  *remainingGuessesLabel;
 @property(nonatomic,weak) IBOutlet UIButton *aButton;
 @property(nonatomic,weak) IBOutlet UIButton *bButton;
 @property(nonatomic,weak) IBOutlet UIButton *cButton;
@@ -215,6 +216,7 @@ bool gameover = false;
             wrongGuess ++;
             guessRemain --;
             NSLog(@"%@ was not in the word, you have %i ramaining guess", searchstring, guessRemain);
+            _remainingGuessesLabel.text = [NSString stringWithFormat:@"%i",guessRemain];
         } else if (correctGuess == false && wrongGuess == 9) {
             [button setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
             gameover = true;
