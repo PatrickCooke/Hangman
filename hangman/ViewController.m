@@ -49,10 +49,12 @@
 
 NSString *wordListString = @"";
 NSString *hiddenWord = @"";
+NSString *victorystring = @"*";
 int wrongGuess = 0;
 int guessRemain = 10;
 bool correctGuess = false;
 bool gameover = false;
+
 
 
 #pragma mark - Core Methods
@@ -200,7 +202,7 @@ bool gameover = false;
 }
 
 -(IBAction)letterButtonPress:(UIButton *)button {
-    if (gameover == true){
+    if (gameover == true){//probably no longer needed
         [self disableAllLetters];
         NSLog(@"gameover");
     } else {
@@ -211,9 +213,18 @@ bool gameover = false;
             NSString *currentLetter = [_currentWord substringWithRange:NSMakeRange(i, 1)];
             if ([currentLetter isEqualToString:searchstring]) {
                 NSLog(@"%@ found at %i",searchstring,i);
+                hiddenWord = [hiddenWord stringByReplacingCharactersInRange:NSMakeRange(i,1) withString:currentLetter]; //replaces the "*" with found letters in the string hidden word
+                _wordLabel.text = hiddenWord; //rewriting the string hidden word with found letters
                 correctGuess = true;
-            } else {
-                //NSLog(@"%@ not found at %i",searchstring,i);
+                if (_wordLabel.text == _currentWord) {
+                    gameover = true;
+                    [self disableAllLetters];
+                    _wordLabel.text = @"Press New Game to Begin";
+                    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Congratulations" message:@"You have won!" preferredStyle:UIAlertControllerStyleAlert];
+                    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {}];
+                    [alert addAction:defaultAction];
+                    [self presentViewController:alert animated:YES completion:nil];
+                }
             }
         }
         if (correctGuess == true) {
@@ -229,6 +240,8 @@ bool gameover = false;
             [button setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
             gameover = true;
             NSLog(@"Game Over");
+            guessRemain --;
+            _remainingGuessesLabel.text = [NSString stringWithFormat:@"%i",guessRemain];
             [self disableAllLetters];
         }
     }
