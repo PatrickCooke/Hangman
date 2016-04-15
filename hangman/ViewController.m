@@ -148,6 +148,32 @@ bool gameover = false;
     [_xButton setUserInteractionEnabled:false];
     [_yButton setUserInteractionEnabled:false];
     [_zButton setUserInteractionEnabled:false];
+    [_aButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    [_bButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    [_cButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    [_dButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    [_eButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    [_fButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    [_gButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    [_hButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    [_iButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    [_jButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    [_kButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    [_lButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    [_mButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    [_nButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    [_oButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    [_pButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    [_qButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    [_rButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    [_sButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    [_tButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    [_uButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    [_vButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    [_wButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    [_xButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    [_yButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    [_zButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
 }
 
 #pragma mark - Interactivity Methods
@@ -158,6 +184,9 @@ bool gameover = false;
     _currentWord = [_wordSetArray[randomWordIndex] lowercaseString];
     NSLog(@"%@", _currentWord);
     gameover = false;
+    wrongGuess = 0;
+    guessRemain = 10;
+    correctGuess = false;
     [self enableAllLetters];
 }
 
@@ -189,7 +218,8 @@ bool gameover = false;
         } else if (correctGuess == false && wrongGuess == 9) {
             [button setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
             gameover = true;
-            //NSLog(@"Game Over");
+            NSLog(@"Game Over");
+            [self disableAllLetters];
         }
     }
 }
