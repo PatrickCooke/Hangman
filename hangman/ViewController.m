@@ -43,6 +43,7 @@
 @property(nonatomic,weak) IBOutlet UIButton     *xButton;
 @property(nonatomic,weak) IBOutlet UIButton     *yButton;
 @property(nonatomic,weak) IBOutlet UIButton     *zButton;
+@property(nonatomic,weak) IBOutlet UIButton     *startGamebutton;
 
 
 @end
@@ -53,7 +54,7 @@ NSString *wordListString = @"";
 NSString *hiddenWord = @"";
 NSString *victorystring = @"*";
 int wrongGuess = 0;
-int guessRemain = 9;
+int guessRemain = 10;
 bool correctGuess = false;
 bool gameover = false;
 int currentImage = 0;
@@ -126,7 +127,7 @@ int currentImage = 0;
     [_xButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [_yButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [_zButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-
+    
 }
 
 - (void)disableAllLetters {
@@ -186,23 +187,29 @@ int currentImage = 0;
 
 #pragma mark - Interactivity Methods
 
-
--(IBAction)startNewGame:(id)sender {
+-(void)startGame {
     hiddenWord = @"";
     int randomWordIndex = arc4random_uniform((u_int32_t)_wordSetArray.count);
     _currentWord = [_wordSetArray[randomWordIndex] lowercaseString];
     NSLog(@"%@", _currentWord);
     gameover = false;
     wrongGuess = 0;
-    guessRemain = 9;
+    guessRemain = 10;
+    currentImage = -1;
     _remainingGuessesLabel.text = [NSString stringWithFormat:@"%i", guessRemain];
     correctGuess = false;
     [self enableAllLetters];
     for (int h = 0; h < [_currentWord length]; h++) {
-         hiddenWord= [hiddenWord stringByAppendingString:@"*"];
+        hiddenWord= [hiddenWord stringByAppendingString:@"*"];
         NSLog(@"%@", hiddenWord);
     }
     _wordLabel.text = [NSString stringWithFormat:@"%@", hiddenWord];
+    [_hangmanImageView setImage:nil];
+}
+
+
+-(IBAction)startNewGame:(id)sender {
+    [self startGame];
 }
 
 -(IBAction)letterButtonPress:(UIButton *)button {
@@ -223,10 +230,13 @@ int currentImage = 0;
                 if (_wordLabel.text == _currentWord) {
                     gameover = true;
                     [self disableAllLetters];
-                    _wordLabel.text = @"Press New Game to Begin";
                     UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Congratulations" message:@"You have won!" preferredStyle:UIAlertControllerStyleAlert];
-                    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {}];
+                    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
                     [alert addAction:defaultAction];
+                    UIAlertAction* newAction = [UIAlertAction actionWithTitle:@"New Game" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+                        [self startGame];
+                    }];
+                    [alert addAction:newAction];
                     [self presentViewController:alert animated:YES completion:nil];
                 }
             }
@@ -234,19 +244,19 @@ int currentImage = 0;
         if (correctGuess == true) {
             [button setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
             NSLog(@"%@ was in the word", searchstring);
-        } else if (correctGuess == false && wrongGuess <= 7) {
+        } else if (correctGuess == false && wrongGuess <= 8) {
             [button setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
             wrongGuess ++;
             guessRemain --;
             NSLog(@"%@ was not in the word, you have %i ramaining guess", searchstring, guessRemain);
             _remainingGuessesLabel.text = [NSString stringWithFormat:@"%i",guessRemain];
-                if (currentImage < (_imageArray.count - 1)) {
-                    currentImage += 1;
-                } else {
-                    currentImage = 0;
-                }
+            if (currentImage < (_imageArray.count - 1)) {
+                currentImage += 1;
+            } else {
+                currentImage = 0;
+            }
             [_hangmanImageView setImage:[UIImage imageNamed:_imageArray[currentImage]]];
-        } else if (correctGuess == false && wrongGuess == 8) {
+        } else if (correctGuess == false && wrongGuess == 9) {
             [button setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
             gameover = true;
             _remainingGuessesLabel.text = [NSString stringWithFormat:@"%i",guessRemain];
@@ -260,10 +270,13 @@ int currentImage = 0;
             guessRemain --;
             _remainingGuessesLabel.text = [NSString stringWithFormat:@"%i",guessRemain];
             [self disableAllLetters];
-            _wordLabel.text = @"Press New Game to Begin";
             UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Sorry, You've Lost :(" message:@"Please try again." preferredStyle:UIAlertControllerStyleAlert];
-            UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {}];
+            UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
             [alert addAction:defaultAction];
+            UIAlertAction* newAction = [UIAlertAction actionWithTitle:@"New Game" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+                [self startGame];
+            }];
+            [alert addAction:newAction];
             [self presentViewController:alert animated:YES completion:nil];
         }
     }
@@ -278,7 +291,7 @@ int currentImage = 0;
     _wordSetArray = [self convertCSVStringToArray:wordString];
     NSLog(@"Count %li",_wordSetArray.count);
     _imageArray = @[@"Hangman01.png", @"Hangman02.png", @"Hangman03.png", @"Hangman04.png", @"Hangman05.png", @"Hangman06.png", @"Hangman07.png", @"Hangman08.png", @"Hangman09.png", @"Hangman10.png"];
-    [_hangmanImageView setImage:[UIImage imageNamed:_imageArray[currentImage]]];
+    [_hangmanImageView setImage:nil];
 }
 
 - (void)didReceiveMemoryWarning {

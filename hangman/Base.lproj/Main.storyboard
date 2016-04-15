@@ -25,9 +25,10 @@
                                     <constraint firstAttribute="width" constant="75" id="3Vh-u2-UaN"/>
                                     <constraint firstAttribute="height" constant="30" id="prJ-8V-jsI"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <state key="normal" title="New Game"/>
                                 <connections>
-                                    <action selector="startNewGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xcG-sB-U6X"/>
+                                    <action selector="startNewGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9qq-f4-0zd"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xy1-U3-eCg">
@@ -413,11 +414,11 @@
                                     <constraint firstAttribute="height" constant="21" id="EI4-ei-z6h"/>
                                     <constraint firstAttribute="width" constant="151" id="wkN-gm-L4s"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zBO-xo-VVq">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zBO-xo-VVq">
                                 <rect key="frame" x="235" y="432" width="30" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="0xL-1m-MoD"/>
@@ -427,16 +428,16 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Press New Game to Begin" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KTe-Lf-cg8">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KTe-Lf-cg8">
                                 <rect key="frame" x="20" y="367" width="560" height="43"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="43" id="ggq-cV-Ys3"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9hU-VZ-nD0">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9hU-VZ-nD0">
                                 <rect key="frame" x="197" y="59" width="206" height="300"/>
                             </imageView>
                         </subviews>
@@ -472,6 +473,7 @@
                             <constraint firstItem="rFP-RA-Eds" firstAttribute="top" secondItem="zBO-xo-VVq" secondAttribute="bottom" constant="21" id="KUB-xS-zVb"/>
                             <constraint firstItem="o9u-Es-z99" firstAttribute="top" secondItem="ktF-rg-EqS" secondAttribute="bottom" constant="8" id="KXK-nQ-62l"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="QUZ-Er-8bV" secondAttribute="bottom" constant="20" id="Kbk-E8-7ub"/>
+                            <constraint firstItem="KTe-Lf-cg8" firstAttribute="top" secondItem="9hU-VZ-nD0" secondAttribute="bottom" constant="8" id="Ln8-y7-bgd"/>
                             <constraint firstItem="HyI-Wx-kbL" firstAttribute="top" secondItem="rFP-RA-Eds" secondAttribute="top" id="MH9-fG-3j1"/>
                             <constraint firstItem="IAl-Wr-pL5" firstAttribute="leading" secondItem="x5j-KZ-lFP" secondAttribute="trailing" constant="8" id="NGe-9e-biF"/>
                             <constraint firstItem="P20-EQ-Eln" firstAttribute="top" secondItem="KTe-Lf-cg8" secondAttribute="bottom" constant="22" id="O6f-jb-wTi"/>
@@ -591,6 +593,7 @@
                         <outlet property="rButton" destination="rFP-RA-Eds" id="3nJ-0i-wyi"/>
                         <outlet property="remainingGuessesLabel" destination="zBO-xo-VVq" id="x0L-Gf-OL7"/>
                         <outlet property="sButton" destination="QmY-nU-XHy" id="Kc7-fB-Snz"/>
+                        <outlet property="startGamebutton" destination="y8g-rW-iI7" id="1mS-uR-lQc"/>
                         <outlet property="tButton" destination="HyI-Wx-kbL" id="W1F-hn-dvT"/>
                         <outlet property="uButton" destination="DNO-bI-nRi" id="L0d-EK-Kiz"/>
                         <outlet property="vButton" destination="WRi-I7-lQa" id="2kP-gX-LKq"/>
