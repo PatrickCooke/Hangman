@@ -13,6 +13,7 @@
 
 @property(nonatomic,strong)     NSArray     *wordSetArray;
 @property(nonatomic,strong)     NSString    *currentWord;
+@property(nonatomic,weak) IBOutlet UILabel  *wordLabel;
 @property(nonatomic,weak) IBOutlet UILabel  *remainingGuessesLabel;
 @property(nonatomic,weak) IBOutlet UIButton *aButton;
 @property(nonatomic,weak) IBOutlet UIButton *bButton;
@@ -47,6 +48,7 @@
 @implementation ViewController
 
 NSString *wordListString = @"";
+NSString *hiddenWord = @"";
 int wrongGuess = 0;
 int guessRemain = 10;
 bool correctGuess = false;
@@ -181,6 +183,7 @@ bool gameover = false;
 
 
 -(IBAction)startNewGame:(id)sender {
+    hiddenWord = @"";
     int randomWordIndex = arc4random_uniform((u_int32_t)_wordSetArray.count);
     _currentWord = [_wordSetArray[randomWordIndex] lowercaseString];
     NSLog(@"%@", _currentWord);
@@ -189,6 +192,11 @@ bool gameover = false;
     guessRemain = 10;
     correctGuess = false;
     [self enableAllLetters];
+    for (int h = 0; h < [_currentWord length]; h++) {
+         hiddenWord= [hiddenWord stringByAppendingString:@"*"];
+        NSLog(@"%@", hiddenWord);
+    }
+    _wordLabel.text = [NSString stringWithFormat:@"%@", hiddenWord];
 }
 
 -(IBAction)letterButtonPress:(UIButton *)button {
