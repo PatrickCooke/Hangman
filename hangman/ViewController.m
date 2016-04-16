@@ -188,6 +188,9 @@ int currentImage = 0;
 #pragma mark - Interactivity Methods
 
 -(void)startGame {
+    wordListString = @"";
+    victorystring = @"*";
+    correctGuess = false;
     hiddenWord = @"";
     int randomWordIndex = arc4random_uniform((u_int32_t)_wordSetArray.count);
     _currentWord = [_wordSetArray[randomWordIndex] lowercaseString];
@@ -228,7 +231,8 @@ int currentImage = 0;
                 _wordLabel.text = hiddenWord; //rewriting the string hidden word with found letters
                 correctGuess = true;
                 if (_wordLabel.text == _currentWord) {
-                    gameover = true;
+                    NSLog(@"you won");
+                    //gameover = true;
                     [self disableAllLetters];
                     UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Congratulations" message:@"You have won!" preferredStyle:UIAlertControllerStyleAlert];
                     UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
@@ -268,9 +272,10 @@ int currentImage = 0;
             [_hangmanImageView setImage:[UIImage imageNamed:_imageArray[currentImage]]];
             NSLog(@"Game Over");
             guessRemain --;
+            NSString *overString = [NSString stringWithFormat: @"The word wss %@. Please play again!", _currentWord];
             _remainingGuessesLabel.text = [NSString stringWithFormat:@"%i",guessRemain];
             [self disableAllLetters];
-            UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Sorry, You've Lost :(" message:@"Please try again." preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Sorry, You've Lost :(" message:(overString) preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
             [alert addAction:defaultAction];
             UIAlertAction* newAction = [UIAlertAction actionWithTitle:@"New Game" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
