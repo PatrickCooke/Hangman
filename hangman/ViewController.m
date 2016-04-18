@@ -193,7 +193,7 @@ int currentImage = 0;
     correctGuess = false;
     hiddenWord = @"";
     int randomWordIndex = arc4random_uniform((u_int32_t)_wordSetArray.count);
-    _currentWord = [_wordSetArray[randomWordIndex] lowercaseString];
+    _currentWord = [_wordSetArray[randomWordIndex] uppercaseString];
     NSLog(@"%@", _currentWord);
     gameover = false;
     wrongGuess = 0;
@@ -222,7 +222,7 @@ int currentImage = 0;
     } else {
         [button setUserInteractionEnabled:false];
         correctGuess = false;
-        NSString *searchstring = [button.titleLabel.text lowercaseString];
+        NSString *searchstring = [button.titleLabel.text uppercaseString];
         for (int i = 0; i < [_currentWord length]; i++) {
             NSString *currentLetter = [_currentWord substringWithRange:NSMakeRange(i, 1)];
             if ([currentLetter isEqualToString:searchstring]) {
@@ -230,7 +230,7 @@ int currentImage = 0;
                 hiddenWord = [hiddenWord stringByReplacingCharactersInRange:NSMakeRange(i,1) withString:currentLetter]; //replaces the "*" with found letters in the string hidden word
                 _wordLabel.text = hiddenWord; //rewriting the string hidden word with found letters
                 correctGuess = true;
-                if (_wordLabel.text == _currentWord) {
+                if ([_wordLabel.text isEqualToString: _currentWord]) {
                     NSLog(@"you won");
                     //gameover = true;
                     [self disableAllLetters];
@@ -245,10 +245,10 @@ int currentImage = 0;
                 }
             }
         }
-        if (correctGuess == true) {
+        if (correctGuess) {
             [button setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
             NSLog(@"%@ was in the word", searchstring);
-        } else if (correctGuess == false && wrongGuess <= 8) {
+        } else if (!correctGuess && wrongGuess <= 8) {
             [button setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
             wrongGuess ++;
             guessRemain --;
@@ -260,7 +260,7 @@ int currentImage = 0;
                 currentImage = 0;
             }
             [_hangmanImageView setImage:[UIImage imageNamed:_imageArray[currentImage]]];
-        } else if (correctGuess == false && wrongGuess == 9) {
+        } else if (!correctGuess && wrongGuess == 9) {
             [button setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
             gameover = true;
             _remainingGuessesLabel.text = [NSString stringWithFormat:@"%i",guessRemain];
@@ -272,7 +272,7 @@ int currentImage = 0;
             [_hangmanImageView setImage:[UIImage imageNamed:_imageArray[currentImage]]];
             NSLog(@"Game Over");
             guessRemain --;
-            NSString *overString = [NSString stringWithFormat: @"The word wss %@. Please play again!", _currentWord];
+            NSString *overString = [NSString stringWithFormat: @"The word was %@. Please play again!", _currentWord];
             _remainingGuessesLabel.text = [NSString stringWithFormat:@"%i",guessRemain];
             [self disableAllLetters];
             UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Sorry, You've Lost :(" message:(overString) preferredStyle:UIAlertControllerStyleAlert];
