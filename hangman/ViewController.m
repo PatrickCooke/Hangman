@@ -296,8 +296,8 @@ int currentImage = 0;
     _wordSetArray = [self convertCSVStringToArray:wordString];
     NSLog(@"Count %li",_wordSetArray.count);
     _imageArray = @[@"Hangman01.png", @"Hangman02.png", @"Hangman03.png", @"Hangman04.png", @"Hangman05.png", @"Hangman06.png", @"Hangman07.png", @"Hangman08.png", @"Hangman09.png", @"Hangman10.png"];
-    [_hangmanImageView setImage:nil];
     [self disableAllLetters];
+    [_hangmanImageView setImage:nil];
 }
 
 - (void)didReceiveMemoryWarning {
